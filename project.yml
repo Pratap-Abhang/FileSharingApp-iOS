@@ -1,0 +1,37 @@
+# XcodeGen spec. Generate the Xcode project with:  xcodegen generate
+# (install with `brew install xcodegen`). The .xcodeproj is generated, so it is not checked in.
+name: FileSharingApp
+options:
+  bundleIdPrefix: com.pratap
+  deploymentTarget:
+    iOS: "15.0"
+packages:
+  FileSharingCodec:
+    path: Packages/FileSharingCodec
+targets:
+  FileSharingApp:
+    type: application
+    platform: iOS
+    sources:
+      - FileSharingApp
+    dependencies:
+      - package: FileSharingCodec
+        product: FileSharingCodec
+    info:
+      path: FileSharingApp/Info.plist
+      properties:
+        CFBundleDisplayName: FileSharingApp
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations:
+          - UIInterfaceOrientationPortrait
+        UISupportedInterfaceOrientations~ipad:
+          - UIInterfaceOrientationPortrait
+        NSCameraUsageDescription: The camera reads the QR codes shown on the other phone to receive photos.
+        NSPhotoLibraryAddUsageDescription: Received photos are saved to your photo library.
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.pratap.FileSharingApp
+        SWIFT_VERSION: "5.9"
+        MARKETING_VERSION: "0.1.0"
+        CURRENT_PROJECT_VERSION: "1"
+        TARGETED_DEVICE_FAMILY: "1"
